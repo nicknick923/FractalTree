@@ -31,12 +31,12 @@ namespace FractalTree
             drawer.DoWork += Drawer_DoWork;
             drawer.RunWorkerCompleted += Drawer_RunWorkerCompleted;
             initialLength = lengthTrackBar.Value;
-            optionsForm.callUpdate += OptionsForm_callUpdate;
+            optionsForm.CallUpdate += OptionsForm_callUpdate;
         }
 
         private void OptionsForm_callUpdate()
         {
-            button1_Click(null, null);
+            Button1_Click(null, null);
         }
 
         private void Drawer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -51,7 +51,7 @@ namespace FractalTree
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            button1_Click(null, null);
+            Button1_Click(null, null);
         }
 
         private void DrawFractalTree(DoWorkEventArgs e)
@@ -81,15 +81,15 @@ namespace FractalTree
                 if (length > 4)
                     foreach (Branch b in optionsForm.GetBranches())
                     {
-                        g.RotateTransform(b.getAngle());
-                        DrawBranch((int)(length * b.getRecLength()), e);
-                        g.RotateTransform(-b.getAngle());
+                        g.RotateTransform(b.GetAngle());
+                        DrawBranch((int)(length * b.GetRecLength()), e);
+                        g.RotateTransform(-b.GetAngle());
                     }
                 g.TranslateTransform(0, length);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (!drawer.IsBusy)
             {
@@ -101,30 +101,18 @@ namespace FractalTree
                 drawer.CancelAsync();
         }
 
-        private void angleTrackBar_MouseHover(object sender, EventArgs e)
-        {
-            t.Hide(this);
-            t.Show("Use this slider to set the angle that the branches should extend in.", this, angleTrackBar.Location.X + 20, angleTrackBar.Location.Y, 2500);
-        }
-
-        private void lengthTrackBar_MouseHover(object sender, EventArgs e)
+        private void LengthTrackBar_MouseHover(object sender, EventArgs e)
         {
             t.Hide(this);
             t.Show("Use this slider to set the length of the trunk.", this, lengthTrackBar.Location.X + 20, lengthTrackBar.Location.Y, 2500);
         }
 
-        private void recursionLengthTrackBar_MouseHover(object sender, EventArgs e)
+        private void Panel1_Resize(object sender, EventArgs e)
         {
-            t.Hide(this);
-            t.Show("Use this slider to set the recursiveness of the branches.", this, recursionLengthTrackBar.Location.X + 20, recursionLengthTrackBar.Location.Y, 2500);
+            Button1_Click(null, null);
         }
 
-        private void panel1_Resize(object sender, EventArgs e)
-        {
-            button1_Click(null, null);
-        }
-
-        private void value1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             optionsForm.Show();
         }

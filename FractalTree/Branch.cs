@@ -29,24 +29,24 @@ namespace FractalTree
             g.TranslateTransform(gWidth / 2, gHeight);
             g.DrawLine(drawingPen, 0, 0, 0, -length);
             g.TranslateTransform(0, -length);
-            g.RotateTransform(getAngle());
-            length = (int)(length * getRecLength());
+            g.RotateTransform(GetAngle());
+            length = (int)(length * GetRecLength());
             g.DrawLine(emphasisPen, 0, 0, 0, -length);
         }
 
-        public int getAngle()
+        public int GetAngle()
         {
             return angle;
         }
 
-        public void changeCharacteristics(int inAngle, float inRecLength)
+        public void ChangeCharacteristics(int inAngle, float inRecLength)
         {
             angle = inAngle;
             recLength = inRecLength;
         }
 
 
-        public float getRecLength()
+        public float GetRecLength()
         {
             return recLength;
         }

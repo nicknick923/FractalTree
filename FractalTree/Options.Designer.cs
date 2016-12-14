@@ -42,7 +42,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(266, 212);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -61,7 +61,7 @@
             this.addBranchButton.TabIndex = 2;
             this.addBranchButton.Text = "Add Branch";
             this.addBranchButton.UseVisualStyleBackColor = true;
-            this.addBranchButton.Click += new System.EventHandler(this.addBranchButton_Click);
+            this.addBranchButton.Click += new System.EventHandler(this.AddBranchButton_Click);
             // 
             // removeBranchButton
             // 
@@ -71,7 +71,7 @@
             this.removeBranchButton.TabIndex = 3;
             this.removeBranchButton.Text = "Remove Branch";
             this.removeBranchButton.UseVisualStyleBackColor = true;
-            this.removeBranchButton.Click += new System.EventHandler(this.removeBranchButton_Click);
+            this.removeBranchButton.Click += new System.EventHandler(this.RemoveBranchButton_Click);
             // 
             // editBranchButton
             // 
@@ -81,7 +81,7 @@
             this.editBranchButton.TabIndex = 4;
             this.editBranchButton.Text = "Edit Branch";
             this.editBranchButton.UseVisualStyleBackColor = true;
-            this.editBranchButton.Click += new System.EventHandler(this.editBranchButton_Click);
+            this.editBranchButton.Click += new System.EventHandler(this.EditBranchButton_Click);
             // 
             // Options
             // 

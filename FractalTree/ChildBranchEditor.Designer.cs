@@ -50,7 +50,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(368, 228);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // angleTrackBar
             // 
@@ -62,9 +62,9 @@
             this.angleTrackBar.Size = new System.Drawing.Size(368, 45);
             this.angleTrackBar.TabIndex = 1;
             this.angleTrackBar.TickFrequency = 10;
-            this.angleTrackBar.ValueChanged += new System.EventHandler(this.angleTrackBar_ValueChanged);
-            this.angleTrackBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.propertyTrackBarKeyUp);
-            this.angleTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.propertyTrackBarMouseUp);
+            this.angleTrackBar.ValueChanged += new System.EventHandler(this.AngleTrackBar_ValueChanged);
+            this.angleTrackBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PropertyTrackBarKeyUp);
+            this.angleTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PropertyTrackBarMouseUp);
             // 
             // label1
             // 
@@ -145,9 +145,9 @@
             this.recursionLengthTrackBar.TabIndex = 6;
             this.recursionLengthTrackBar.TickFrequency = 10;
             this.recursionLengthTrackBar.Value = 10;
-            this.recursionLengthTrackBar.ValueChanged += new System.EventHandler(this.recursionLengthTrackBar_ValueChanged);
-            this.recursionLengthTrackBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.propertyTrackBarKeyUp);
-            this.recursionLengthTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.propertyTrackBarMouseUp);
+            this.recursionLengthTrackBar.ValueChanged += new System.EventHandler(this.RecursionLengthTrackBar_ValueChanged);
+            this.recursionLengthTrackBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PropertyTrackBarKeyUp);
+            this.recursionLengthTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PropertyTrackBarMouseUp);
             // 
             // refreshFullTreeButton
             // 
@@ -157,7 +157,7 @@
             this.refreshFullTreeButton.TabIndex = 11;
             this.refreshFullTreeButton.Text = "Refresh Full Tree";
             this.refreshFullTreeButton.UseVisualStyleBackColor = true;
-            this.refreshFullTreeButton.Click += new System.EventHandler(this.refreshFullTreeButton_Click);
+            this.refreshFullTreeButton.Click += new System.EventHandler(this.RefreshFullTreeButton_Click);
             // 
             // liveUpdateCheckBox
             // 

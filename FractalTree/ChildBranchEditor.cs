@@ -18,18 +18,18 @@ namespace FractalTree
         private Graphics bitmapGraphics;
         public event VisualUpdateHandler VisualUpdateEvent;
         private Bitmap drawingImage;
-        public event NumberUpdateHandler numberUpdate;
+        public event NumberUpdateHandler NumberUpdate;
         public ChildBranchEditor(Branch inBranch)
         {
             InitializeComponent();
             b = inBranch;
             panelGraphics = panel1.CreateGraphics();
 
-            recursionLengthTrackBar.Value = (int)(b.getRecLength() * 100);
-            angleTrackBar.Value = b.getAngle();
+            recursionLengthTrackBar.Value = (int)(b.GetRecLength() * 100);
+            angleTrackBar.Value = b.GetAngle();
         }
 
-        private void updateDrawing()
+        private void UpdateDrawing()
         {
             drawingImage = new Bitmap(panel1.Size.Width, panel1.Size.Height);
             bitmapGraphics = Graphics.FromImage(drawingImage);
@@ -37,50 +37,47 @@ namespace FractalTree
             panelGraphics.DrawImage(drawingImage, 0, 0);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void Panel1_Paint(object sender, PaintEventArgs e)
         {
-            updateDrawing();
+            UpdateDrawing();
         }
 
-        private void recursionLengthTrackBar_ValueChanged(object sender, EventArgs e)
+        private void RecursionLengthTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            b.changeCharacteristics(b.getAngle(), (float)recursionLengthTrackBar.Value / 100);
+            b.ChangeCharacteristics(b.GetAngle(), (float)recursionLengthTrackBar.Value / 100);
             panel1.Invalidate();
-            callNumberUpdate();
+            CallNumberUpdate();
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
 
         }
 
-        private void callNumberUpdate()
+        private void CallNumberUpdate()
         {
-            if (numberUpdate != null)
-            {
-                numberUpdate();
-            }
+            NumberUpdate?.Invoke();
         }
 
-        private void refreshFullTreeButton_Click(object sender, EventArgs e)
+        private void RefreshFullTreeButton_Click(object sender, EventArgs e)
         {
             VisualUpdateEvent();
         }
 
-        private void angleTrackBar_ValueChanged(object sender, EventArgs e)
+        private void AngleTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            b.changeCharacteristics(angleTrackBar.Value, b.getRecLength());
+            b.ChangeCharacteristics(angleTrackBar.Value, b.GetRecLength());
             panel1.Invalidate();
-            callNumberUpdate();
+            CallNumberUpdate();
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
         }
 
-        private void propertyTrackBarKeyUp(object sender, KeyEventArgs e)
+        private void PropertyTrackBarKeyUp(object sender, KeyEventArgs e)
         {
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
         }
 
-        private void propertyTrackBarMouseUp(object sender, MouseEventArgs e)
+        private void PropertyTrackBarMouseUp(object sender, MouseEventArgs e)
         {
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
