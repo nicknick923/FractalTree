@@ -18,6 +18,7 @@ namespace FractalTree
         float gWidth;
         float gHeight;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -48,10 +49,12 @@ namespace FractalTree
             g = panel1.CreateGraphics();
             g.Clear(panel1.BackColor);
 
+
             gWidth = g.VisibleClipBounds.Width;
             gHeight = g.VisibleClipBounds.Height;
-
-            Branch(100);
+            g.TranslateTransform(gWidth / 2, gHeight);
+            Branch(200);
+            g.TranslateTransform(-(gWidth / 2), -(gHeight));
             /*
             float length = 100;
             g.DrawLine(drawingPen, gWidth / 2, gHeight, gWidth / 2, gHeight - length);
@@ -66,8 +69,18 @@ namespace FractalTree
 
         private void Branch(float length)
         {
-
-            g.DrawLine(drawingPen, gWidth / 2, gHeight, gWidth / 2, gHeight - length);
+            g.DrawLine(drawingPen, 0, 0, 0, -length);
+            g.TranslateTransform(0, -length);
+            if (length > 4)
+            {
+                g.RotateTransform(45);
+                Branch(length * .75F);
+                g.RotateTransform(-45);
+                g.RotateTransform(-45);
+                Branch(length * .75F);
+                g.RotateTransform(45);
+            }
+            g.TranslateTransform(0, length);
         }
 
 
