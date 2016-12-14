@@ -12,9 +12,14 @@ namespace FractalTree
 {
     public partial class ChildBranchEditor : Form
     {
-        public ChildBranchEditor()
+        Branch b;
+        public ChildBranchEditor(ref Branch inBranch)
         {
             InitializeComponent();
+            b = inBranch;
+            b.DrawBranchInEditor(panel1.CreateGraphics());
         }
+
+
     }
 }

@@ -28,13 +28,18 @@ namespace FractalTree
             drawer.WorkerSupportsCancellation = true;
             drawer.WorkerReportsProgress = false;
             drawer.DoWork += Drawer_DoWork;
+            drawer.RunWorkerCompleted += Drawer_RunWorkerCompleted;
+            initalLength = lengthTrackBar.Value;
+        }
+
+        private void Drawer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            button1.Text = "Draw";
         }
 
         private void Drawer_DoWork(object sender, DoWorkEventArgs e)
         {
-            button1.Text = "Cancel";
             DrawFractalTree(e);
-            button1.Text = "Draw";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,6 +49,8 @@ namespace FractalTree
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            button1.Text = "Cancel";
+
             button1_Click(null, null);
         }
 
@@ -58,12 +65,15 @@ namespace FractalTree
 
 
             g.TranslateTransform(gWidth / 2, gHeight);
-            DrawBranch(lengthTrackBar.Value, e);
+            DrawBranch(initalLength, e);
             g.TranslateTransform(-(gWidth / 2), -(gHeight));
 
             panel1.CreateGraphics().DrawImage(bm, 0, 0);
 
         }
+
+
+        private int initalLength;
 
 
 
@@ -108,7 +118,10 @@ namespace FractalTree
         private void button1_Click(object sender, EventArgs e)
         {
             if (!drawer.IsBusy)
+            {
+                button1.Text = "Cancel";
                 drawer.RunWorkerAsync();
+            }
             else
                 drawer.CancelAsync();
         }
