@@ -55,10 +55,6 @@ namespace FractalTree
             g.TranslateTransform(gWidth / 2, gHeight);
             Branch(200);
             g.TranslateTransform(-(gWidth / 2), -(gHeight));
-            /*
-            float length = 100;
-            g.DrawLine(drawingPen, gWidth / 2, gHeight, gWidth / 2, gHeight - length);
-            */
 
         }
 
