@@ -49,11 +49,6 @@ namespace FractalTree
 
         private void DrawFractalTree(DoWorkEventArgs e)
         {
-            listOfBranches.Clear();
-
-            listOfBranches.Add(new Branch(10, .75F));
-            listOfBranches.Add(new Branch(-45, .75F));
-            listOfBranches.Add(new Branch(0, .50F));
             bm = new Bitmap(panel1.Size.Width, panel1.Size.Height);
             //g = panel1.CreateGraphics();
             g = Graphics.FromImage(bm);
@@ -76,7 +71,6 @@ namespace FractalTree
         {
         }
 
-        private List<Branch> listOfBranches = new List<Branch>();
 
 
         private void DrawBranch(int length, DoWorkEventArgs e)
@@ -91,7 +85,7 @@ namespace FractalTree
                 g.TranslateTransform(0, -length);
                 if (length > 4)
                 {
-                    foreach (Branch b in listOfBranches)
+                    foreach (Branch b in optionsForm.GetBranches())
                     {
                         g.RotateTransform(b.getAngle());
                         DrawBranch((int)(length * b.getRecLength()), e);

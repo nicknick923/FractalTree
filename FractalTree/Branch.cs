@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FractalTree
 {
-    class Branch
+    public class Branch
     {
         private int angleFromParent;
         private float recLength;
@@ -25,6 +25,11 @@ namespace FractalTree
         public float getRecLength()
         {
             return recLength;
+        }
+
+        public override String ToString()
+        {
+            return "Angle: " + angleFromParent + " Recursive Length: " + recLength;
         }
 
     }
