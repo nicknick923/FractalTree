@@ -18,6 +18,7 @@ namespace FractalTree
             listBox1.Items.Add(new Branch(10, .75F));
             listBox1.Items.Add(new Branch(-45, .75F));
             listBox1.Items.Add(new Branch(0, .50F));
+            listBox1_SelectedIndexChanged(null, null);
         }
 
         private void Options_FormClosing(object sender, FormClosingEventArgs e)

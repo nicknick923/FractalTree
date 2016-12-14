@@ -21,16 +21,16 @@ namespace FractalTree
         public void DrawBranchInEditor(Graphics g)
         {
             Pen drawingPen = Pens.Black;
+            Pen emphasisPen = Pens.Blue;
             float gWidth = g.VisibleClipBounds.Width;
             float gHeight = g.VisibleClipBounds.Height;
-            int length = 50;
+            int length = (int)gHeight/2;
             g.TranslateTransform(gWidth / 2, gHeight);
             g.DrawLine(drawingPen, 0, 0, 0, -length);
-            //g.TranslateTransform(0, -length);
             g.TranslateTransform(0, -length);
             g.RotateTransform(getAngle());
             length = (int)(length * getRecLength());
-            g.DrawLine(drawingPen, 0, 0, 0, -length);
+            g.DrawLine(emphasisPen, 0, 0, 0, -length);
         }
 
         public int getAngle()

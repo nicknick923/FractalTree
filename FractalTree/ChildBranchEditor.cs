@@ -13,15 +13,23 @@ namespace FractalTree
     public partial class ChildBranchEditor : Form
     {
         private Branch b;
+        private Graphics g;
         public ChildBranchEditor(Branch inBranch)
         {
             InitializeComponent();
             b = inBranch;
+            g = panel1.CreateGraphics();
         }
 
         private void ChildBranchEditor_Shown(object sender, EventArgs e)
         {
-            b.DrawBranchInEditor(panel1.CreateGraphics());
+            updateDrawing();
+        }
+
+        private void updateDrawing()
+        {
+            g.Clear(Color.Gray);
+            b.DrawBranchInEditor(g);
         }
     }
 }
