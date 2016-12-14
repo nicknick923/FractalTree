@@ -12,8 +12,9 @@ namespace FractalTree
 {
     public partial class Options : Form
     {
-        public delegate void UpdateEventHandler();
-        public event UpdateEventHandler callUpdate;
+        public delegate void VisualUpdateHandler();
+        public delegate void NumberUpdateHandler();
+        public event VisualUpdateHandler callUpdate;
         public Options()
         {
             InitializeComponent();
@@ -41,9 +42,8 @@ namespace FractalTree
         public List<Branch> GetBranches()
         {
             List<Branch> listOfBranches = new List<Branch>();
-            foreach (Object o in listBox1.Items)
-                if (o.GetType() == typeof(Branch))
-                    listOfBranches.Add((Branch)o);
+            foreach (Branch b in listBox1.Items)
+                    listOfBranches.Add(b);
             return listOfBranches;
         }
 
@@ -51,20 +51,41 @@ namespace FractalTree
 
         private void addBranchButton_Click(object sender, EventArgs e)
         {
-
+            Branch b = new Branch(0, .5F);
+            listBox1.Items.Add(b);
+            CreateChildBranchEditor(b);
         }
 
         private void editBranchButton_Click(object sender, EventArgs e)
         {
-            ChildBranchEditor cbe = new ChildBranchEditor((Branch)listBox1.SelectedItem);
-            cbe.Show();
-            cbe.callUpdate += ChildBranchEditorFormClosed;
+            CreateChildBranchEditor((Branch)listBox1.SelectedItem);
         }
 
-        private void ChildBranchEditorFormClosed()
+        private void CreateChildBranchEditor(Branch b)
+        {
+            ChildBranchEditor cbe = new ChildBranchEditor(b);
+            cbe.Show();
+            cbe.VisualUpdateEvent += ChildBranchEditorUpdateCall;
+            cbe.numberUpdate += ChildBranchEditorNumberUpdate;
+        }
+
+        private void ChildBranchEditorNumberUpdate()
+        {
+            UpdateToString(listBox1);
+        }
+
+        private void UpdateToString(ListBox listBox)
+        {
+            int count = listBox.Items.Count;
+            listBox.SuspendLayout();
+            for (int i = 0; i < count; i++)
+                listBox.Items[i] = listBox.Items[i];
+            listBox.ResumeLayout();
+        }
+
+        private void ChildBranchEditorUpdateCall()
         {
             callUpdate();
-            //*************************
         }
 
         private void removeBranchButton_Click(object sender, EventArgs e)

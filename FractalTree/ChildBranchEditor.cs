@@ -16,21 +16,17 @@ namespace FractalTree
         private Branch b;
         private Graphics panelGraphics;
         private Graphics bitmapGraphics;
+        public event VisualUpdateHandler VisualUpdateEvent;
         private Bitmap drawingImage;
-        public event UpdateEventHandler callUpdate;
+        public event NumberUpdateHandler numberUpdate;
         public ChildBranchEditor(Branch inBranch)
         {
             InitializeComponent();
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             b = inBranch;
             panelGraphics = panel1.CreateGraphics();
 
             recursionLengthTrackBar.Value = (int)(b.getRecLength() * 100);
             angleTrackBar.Value = b.getAngle();
-        }
-
-        private void ChildBranchEditor_Shown(object sender, EventArgs e)
-        {
         }
 
         private void updateDrawing()
@@ -50,17 +46,44 @@ namespace FractalTree
         {
             b.changeCharacteristics(b.getAngle(), (float)recursionLengthTrackBar.Value / 100);
             panel1.Invalidate();
+            callNumberUpdate();
+            if (liveUpdateCheckBox.Checked)
+                VisualUpdateEvent();
+
+        }
+
+        private void callNumberUpdate()
+        {
+            if (numberUpdate != null)
+            {
+                numberUpdate();
+            }
         }
 
         private void refreshFullTreeButton_Click(object sender, EventArgs e)
         {
-            callUpdate();
+            VisualUpdateEvent();
         }
 
         private void angleTrackBar_ValueChanged(object sender, EventArgs e)
         {
             b.changeCharacteristics(angleTrackBar.Value, b.getRecLength());
             panel1.Invalidate();
+            callNumberUpdate();
+            if (liveUpdateCheckBox.Checked)
+                VisualUpdateEvent();
+        }
+
+        private void propertyTrackBarKeyUp(object sender, KeyEventArgs e)
+        {
+            if (liveUpdateCheckBox.Checked)
+                VisualUpdateEvent();
+        }
+
+        private void propertyTrackBarMouseUp(object sender, MouseEventArgs e)
+        {
+            if (liveUpdateCheckBox.Checked)
+                VisualUpdateEvent();
         }
     }
 }

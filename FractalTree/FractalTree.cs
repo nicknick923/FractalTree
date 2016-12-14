@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FractalTree
 {
-    public partial class Form1 : Form
+    public partial class FractalTree : Form
     {
         Bitmap bm;
         Graphics g;
@@ -23,8 +23,7 @@ namespace FractalTree
 
         private int initialLength;
 
-
-        public Form1()
+        public FractalTree()
         {
             InitializeComponent();
             drawer.WorkerSupportsCancellation = true;
@@ -50,11 +49,6 @@ namespace FractalTree
             DrawFractalTree(e);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Shown(object sender, EventArgs e)
         {
             button1_Click(null, null);
@@ -68,7 +62,6 @@ namespace FractalTree
             gHeight = g.VisibleClipBounds.Height;
             g.Clear(panel1.BackColor);
 
-
             g.TranslateTransform(gWidth / 2, gHeight);
             DrawBranch(initialLength, e);
             g.TranslateTransform(-(gWidth / 2), -(gHeight));
@@ -76,14 +69,6 @@ namespace FractalTree
             panel1.CreateGraphics().DrawImage(bm, 0, 0);
 
         }
-
-
-
-        private void panel1_Click(object sender, EventArgs e)
-        {
-        }
-
-
 
         private void DrawBranch(int length, DoWorkEventArgs e)
         {
@@ -137,11 +122,6 @@ namespace FractalTree
         private void panel1_Resize(object sender, EventArgs e)
         {
             button1_Click(null, null);
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
         }
 
         private void value1ToolStripMenuItem_Click(object sender, EventArgs e)

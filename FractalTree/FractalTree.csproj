@@ -58,11 +58,11 @@
     <Compile Include="ChildBranchEditor.Designer.cs">
       <DependentUpon>ChildBranchEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FractalTree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FractalTree.Designer.cs">
+      <DependentUpon>FractalTree.cs</DependentUpon>
     </Compile>
     <Compile Include="GrowableArray.cs" />
     <Compile Include="Options.cs">
@@ -76,8 +76,8 @@
     <EmbeddedResource Include="ChildBranchEditor.resx">
       <DependentUpon>ChildBranchEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FractalTree.resx">
+      <DependentUpon>FractalTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options.resx">
       <DependentUpon>Options.cs</DependentUpon>

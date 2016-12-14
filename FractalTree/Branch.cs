@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +11,7 @@ namespace FractalTree
     {
         private int angle;
         private float recLength;
+
 
         public Branch(int inAngle, float recursiveLength)
         {
@@ -53,10 +53,7 @@ namespace FractalTree
 
         public override String ToString()
         {
-            return "Angle: " + angle + " Recursive Length: " + recLength;
-        }//test
-
-
-
+            return "Angle: " + angle + "° Recursive Length: " + recLength;
+        }
     }
 }
