@@ -19,6 +19,8 @@ namespace FractalTree
         float gHeight;
         BackgroundWorker drawer = new BackgroundWorker();
         ToolTip t = new ToolTip();
+        Options optionsForm = new Options();
+
 
         public Form1()
         {
@@ -47,6 +49,11 @@ namespace FractalTree
 
         private void DrawFractalTree(DoWorkEventArgs e)
         {
+            listOfBranches.Clear();
+
+            listOfBranches.Add(new Branch(10, .75F));
+            listOfBranches.Add(new Branch(-45, .75F));
+            listOfBranches.Add(new Branch(0, .50F));
             bm = new Bitmap(panel1.Size.Width, panel1.Size.Height);
             //g = panel1.CreateGraphics();
             g = Graphics.FromImage(bm);
@@ -56,10 +63,10 @@ namespace FractalTree
 
 
             g.TranslateTransform(gWidth / 2, gHeight);
-            Branch(lengthTrackBar.Value, e);
+            DrawBranch(lengthTrackBar.Value, e);
             g.TranslateTransform(-(gWidth / 2), -(gHeight));
 
-            panel1.CreateGraphics().DrawImage(bm, 0,0);
+            panel1.CreateGraphics().DrawImage(bm, 0, 0);
 
         }
 
@@ -69,7 +76,10 @@ namespace FractalTree
         {
         }
 
-        private void Branch(float length, DoWorkEventArgs e)
+        private List<Branch> listOfBranches = new List<Branch>();
+
+
+        private void DrawBranch(int length, DoWorkEventArgs e)
         {
             if (drawer.CancellationPending)
             {
@@ -81,12 +91,21 @@ namespace FractalTree
                 g.TranslateTransform(0, -length);
                 if (length > 4)
                 {
+                    foreach (Branch b in listOfBranches)
+                    {
+                        g.RotateTransform(b.getAngle());
+                        DrawBranch((int)(length * b.getRecLength()), e);
+                        g.RotateTransform(-b.getAngle());
+                    }
+                    
+                    /*
                     g.RotateTransform(angleTrackBar.Value);
-                    Branch(length * recursionLengthTrackBar.Value / 100, e);
+                    DrawBranch(length * recursionLengthTrackBar.Value / 100, e);
                     g.RotateTransform(-angleTrackBar.Value);
                     g.RotateTransform(.15F*-angleTrackBar.Value);
-                    Branch(length * recursionLengthTrackBar.Value / 100, e);
+                    DrawBranch(length * recursionLengthTrackBar.Value / 100, e);
                     g.RotateTransform(.15F*angleTrackBar.Value);
+                    */
                 }
                 g.TranslateTransform(0, length);
             }
@@ -130,7 +149,7 @@ namespace FractalTree
 
         private void value1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            optionsForm.Show();
         }
     }
 }

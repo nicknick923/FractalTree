@@ -16,5 +16,14 @@ namespace FractalTree
         {
             InitializeComponent();
         }
+
+        private void Options_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.FormOwnerClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+        }
     }
 }
