@@ -12,15 +12,13 @@ namespace FractalTree
 {
     public partial class Options : Form
     {
-        private GrowableArray<Branch> listOfBranches = new GrowableArray<Branch>();
-
         public Options()
         {
             InitializeComponent();
-            listOfBranches.Add(new Branch(10, .75F));
-            listOfBranches.Add(new Branch(-45, .75F));
-            listOfBranches.Add(new Branch(0, .50F));
-            updateListBox();
+            listBox1.Items.Add(new Branch(10, .75F));
+            listBox1.Items.Add(new Branch(-45, .75F));
+            listBox1.Items.Add(new Branch(0, .50F));
+            listBox1_SelectedIndexChanged(null, null);
         }
 
         private void Options_FormClosing(object sender, FormClosingEventArgs e)
@@ -32,16 +30,10 @@ namespace FractalTree
             }
         }
 
-        public void updateListBox()
-        {
-            listBox1.Items.Clear();
-            foreach (Branch b in listOfBranches)
-                listBox1.Items.Add(b);
-        }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            editBranchButton.Enabled = listBox1.SelectedIndex != -1;
+            removeBranchButton.Enabled = listBox1.SelectedIndex != -1;
         }
 
         public List<Branch> GetBranches()
@@ -53,7 +45,7 @@ namespace FractalTree
             return listOfBranches;
         }
 
-      
+
 
         private void addBranchButton_Click(object sender, EventArgs e)
         {
@@ -62,15 +54,13 @@ namespace FractalTree
 
         private void editBranchButton_Click(object sender, EventArgs e)
         {
-            int selectedIndex = listBox1.SelectedIndex;
-            ChildBranchEditor cbe = new ChildBranchEditor(ref listOfBranches.ElementAt(selectedIndex));
+            ChildBranchEditor cbe = new ChildBranchEditor((Branch)listBox1.SelectedItem);
             cbe.Show();
         }
 
         private void removeBranchButton_Click(object sender, EventArgs e)
         {
-            listOfBranches.RemoveItem((Branch)listBox1.SelectedItem);
-            updateListBox();
+            listBox1.Items.Remove(listBox1.SelectedItem);
         }
     }
 }

@@ -19,6 +19,21 @@ namespace FractalTree
             recLength = recursiveLength;
         }
 
+        public void DrawBranchInEditor(Graphics g)
+        {
+            Pen drawingPen = Pens.Black;
+            Pen emphasisPen = Pens.Blue;
+            float gWidth = g.VisibleClipBounds.Width;
+            float gHeight = g.VisibleClipBounds.Height;
+            int length = (int)gHeight/2;
+            g.TranslateTransform(gWidth / 2, gHeight);
+            g.DrawLine(drawingPen, 0, 0, 0, -length);
+            g.TranslateTransform(0, -length);
+            g.RotateTransform(getAngle());
+            length = (int)(length * getRecLength());
+            g.DrawLine(emphasisPen, 0, 0, 0, -length);
+        }
+
         public int getAngle()
         {
             return angleFromParent;
@@ -48,7 +63,8 @@ namespace FractalTree
         public override String ToString()
         {
             return "Angle: " + angleFromParent + " Recursive Length: " + recLength;
-        }
+        }//test
+
 
 
         public IEnumerator GetEnumerator()
