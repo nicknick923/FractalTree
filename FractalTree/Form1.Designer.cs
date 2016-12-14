@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.angleTrackBar = new System.Windows.Forms.TrackBar();
+            this.lengthTrackBar = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lengthTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -43,8 +43,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.trackBar1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.trackBar2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.angleTrackBar, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lengthTrackBar, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -55,23 +55,23 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(695, 394);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // trackBar1
+            // angleTrackBar
             // 
-            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBar1.Location = new System.Drawing.Point(3, 356);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(341, 35);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.angleTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.angleTrackBar.Location = new System.Drawing.Point(3, 356);
+            this.angleTrackBar.Name = "angleTrackBar";
+            this.angleTrackBar.Size = new System.Drawing.Size(341, 35);
+            this.angleTrackBar.TabIndex = 0;
+            this.angleTrackBar.Scroll += new System.EventHandler(this.angleTrackBar_Scroll);
             // 
-            // trackBar2
+            // lengthTrackBar
             // 
-            this.trackBar2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBar2.Location = new System.Drawing.Point(350, 356);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(342, 35);
-            this.trackBar2.TabIndex = 1;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.lengthTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lengthTrackBar.Location = new System.Drawing.Point(350, 356);
+            this.lengthTrackBar.Name = "lengthTrackBar";
+            this.lengthTrackBar.Size = new System.Drawing.Size(342, 35);
+            this.lengthTrackBar.TabIndex = 1;
+            this.lengthTrackBar.Scroll += new System.EventHandler(this.lengthTrackBar_Scroll);
             // 
             // panel1
             // 
@@ -81,6 +81,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(689, 347);
             this.panel1.TabIndex = 2;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
             // Form1
             // 
@@ -94,8 +95,8 @@
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lengthTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,8 +105,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar angleTrackBar;
+        private System.Windows.Forms.TrackBar lengthTrackBar;
         private System.Windows.Forms.Panel panel1;
     }
 }
