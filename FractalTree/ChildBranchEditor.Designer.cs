@@ -48,7 +48,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 140);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 228);
+            this.panel1.Size = new System.Drawing.Size(195, 166);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
@@ -59,7 +59,7 @@
             this.angleTrackBar.Maximum = 170;
             this.angleTrackBar.Minimum = -170;
             this.angleTrackBar.Name = "angleTrackBar";
-            this.angleTrackBar.Size = new System.Drawing.Size(368, 45);
+            this.angleTrackBar.Size = new System.Drawing.Size(195, 45);
             this.angleTrackBar.TabIndex = 1;
             this.angleTrackBar.TickFrequency = 10;
             this.angleTrackBar.ValueChanged += new System.EventHandler(this.AngleTrackBar_ValueChanged);
@@ -79,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(354, 121);
+            this.label2.Location = new System.Drawing.Point(180, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
@@ -89,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(190, 120);
+            this.label3.Location = new System.Drawing.Point(101, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 4;
@@ -117,7 +117,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(354, 57);
+            this.label7.Location = new System.Drawing.Point(180, 57);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 8;
@@ -141,7 +141,7 @@
             this.recursionLengthTrackBar.Maximum = 90;
             this.recursionLengthTrackBar.Minimum = 10;
             this.recursionLengthTrackBar.Name = "recursionLengthTrackBar";
-            this.recursionLengthTrackBar.Size = new System.Drawing.Size(368, 45);
+            this.recursionLengthTrackBar.Size = new System.Drawing.Size(195, 45);
             this.recursionLengthTrackBar.TabIndex = 6;
             this.recursionLengthTrackBar.TickFrequency = 10;
             this.recursionLengthTrackBar.Value = 10;
@@ -151,9 +151,9 @@
             // 
             // refreshFullTreeButton
             // 
-            this.refreshFullTreeButton.Location = new System.Drawing.Point(12, 375);
+            this.refreshFullTreeButton.Location = new System.Drawing.Point(12, 312);
             this.refreshFullTreeButton.Name = "refreshFullTreeButton";
-            this.refreshFullTreeButton.Size = new System.Drawing.Size(282, 23);
+            this.refreshFullTreeButton.Size = new System.Drawing.Size(105, 23);
             this.refreshFullTreeButton.TabIndex = 11;
             this.refreshFullTreeButton.Text = "Refresh Full Tree";
             this.refreshFullTreeButton.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             // liveUpdateCheckBox
             // 
             this.liveUpdateCheckBox.AutoSize = true;
-            this.liveUpdateCheckBox.Location = new System.Drawing.Point(300, 379);
+            this.liveUpdateCheckBox.Location = new System.Drawing.Point(123, 316);
             this.liveUpdateCheckBox.Name = "liveUpdateCheckBox";
             this.liveUpdateCheckBox.Size = new System.Drawing.Size(84, 17);
             this.liveUpdateCheckBox.TabIndex = 12;
@@ -173,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 417);
+            this.ClientSize = new System.Drawing.Size(221, 341);
             this.Controls.Add(this.liveUpdateCheckBox);
             this.Controls.Add(this.refreshFullTreeButton);
             this.Controls.Add(this.label5);
