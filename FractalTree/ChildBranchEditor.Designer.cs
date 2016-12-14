@@ -47,6 +47,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ChildBranchEditor";
             this.Text = "Branch Editor";
+            this.Shown += new System.EventHandler(this.ChildBranchEditor_Shown);
             this.ResumeLayout(false);
 
         }

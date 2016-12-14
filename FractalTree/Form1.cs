@@ -31,6 +31,7 @@ namespace FractalTree
             drawer.DoWork += Drawer_DoWork;
             drawer.RunWorkerCompleted += Drawer_RunWorkerCompleted;
             initialLength = lengthTrackBar.Value;
+
         }
 
         private void Drawer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -50,8 +51,8 @@ namespace FractalTree
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            button1.Text = "Cancel";
             button1_Click(null, null);
+
         }
 
         private void DrawFractalTree(DoWorkEventArgs e)
@@ -115,6 +116,7 @@ namespace FractalTree
         {
             if (!drawer.IsBusy)
             {
+                initialLength = lengthTrackBar.Value;
                 button1.Text = "Cancel";
                 drawer.RunWorkerAsync();
             }
@@ -142,7 +144,6 @@ namespace FractalTree
 
         private void panel1_Resize(object sender, EventArgs e)
         {
-            button1.Text = "Cancel";
             button1_Click(null, null);
         }
 

@@ -31,7 +31,8 @@ namespace FractalTree
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            editBranchButton.Enabled = listBox1.SelectedIndex != -1;
+            removeBranchButton.Enabled = listBox1.SelectedIndex != -1;
         }
 
         public List<Branch> GetBranches()
@@ -43,7 +44,7 @@ namespace FractalTree
             return listOfBranches;
         }
 
-      
+
 
         private void addBranchButton_Click(object sender, EventArgs e)
         {
@@ -58,7 +59,7 @@ namespace FractalTree
 
         private void removeBranchButton_Click(object sender, EventArgs e)
         {
-
+            listBox1.Items.Remove(listBox1.SelectedItem);
         }
     }
 }
