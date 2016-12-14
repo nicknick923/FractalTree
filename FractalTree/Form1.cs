@@ -20,6 +20,7 @@ namespace FractalTree
         BackgroundWorker drawer = new BackgroundWorker();
         ToolTip t = new ToolTip();
         Options optionsForm = new Options();
+        private int initialLength;
 
 
         public Form1()
@@ -28,13 +29,18 @@ namespace FractalTree
             drawer.WorkerSupportsCancellation = true;
             drawer.WorkerReportsProgress = false;
             drawer.DoWork += Drawer_DoWork;
+            drawer.RunWorkerCompleted += Drawer_RunWorkerCompleted;
+            initialLength = lengthTrackBar.Value;
+        }
+
+        private void Drawer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            button1.Text = "Draw";
         }
 
         private void Drawer_DoWork(object sender, DoWorkEventArgs e)
         {
-            button1.Text = "Cancel";
             DrawFractalTree(e);
-            button1.Text = "Draw";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,13 +50,13 @@ namespace FractalTree
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            button1.Text = "Cancel";
             button1_Click(null, null);
         }
 
         private void DrawFractalTree(DoWorkEventArgs e)
         {
             bm = new Bitmap(panel1.Size.Width, panel1.Size.Height);
-            //g = panel1.CreateGraphics();
             g = Graphics.FromImage(bm);
             gWidth = g.VisibleClipBounds.Width;
             gHeight = g.VisibleClipBounds.Height;
@@ -58,7 +64,7 @@ namespace FractalTree
 
 
             g.TranslateTransform(gWidth / 2, gHeight);
-            DrawBranch(lengthTrackBar.Value, e);
+            DrawBranch(initialLength, e);
             g.TranslateTransform(-(gWidth / 2), -(gHeight));
 
             panel1.CreateGraphics().DrawImage(bm, 0, 0);
@@ -108,7 +114,10 @@ namespace FractalTree
         private void button1_Click(object sender, EventArgs e)
         {
             if (!drawer.IsBusy)
+            {
+                button1.Text = "Cancel";
                 drawer.RunWorkerAsync();
+            }
             else
                 drawer.CancelAsync();
         }
@@ -133,6 +142,7 @@ namespace FractalTree
 
         private void panel1_Resize(object sender, EventArgs e)
         {
+            button1.Text = "Cancel";
             button1_Click(null, null);
         }
 

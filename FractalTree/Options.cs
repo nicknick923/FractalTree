@@ -52,7 +52,8 @@ namespace FractalTree
 
         private void editBranchButton_Click(object sender, EventArgs e)
         {
-
+            ChildBranchEditor cbe = new ChildBranchEditor((Branch)listBox1.SelectedItem);
+            cbe.Show();
         }
 
         private void removeBranchButton_Click(object sender, EventArgs e)
