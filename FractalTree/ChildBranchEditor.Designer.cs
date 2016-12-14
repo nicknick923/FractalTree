@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.angleTrackBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +38,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.recursionLengthTrackBar = new System.Windows.Forms.TrackBar();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.refreshFullTreeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.angleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recursionLengthTrackBar)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +61,7 @@
             this.angleTrackBar.Size = new System.Drawing.Size(368, 45);
             this.angleTrackBar.TabIndex = 1;
             this.angleTrackBar.TickFrequency = 10;
+            this.angleTrackBar.ValueChanged += new System.EventHandler(this.angleTrackBar_ValueChanged);
             // 
             // label1
             // 
@@ -144,16 +144,22 @@
             this.recursionLengthTrackBar.Value = 10;
             this.recursionLengthTrackBar.ValueChanged += new System.EventHandler(this.recursionLengthTrackBar_ValueChanged);
             // 
-            // timer1
+            // refreshFullTreeButton
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.refreshFullTreeButton.Location = new System.Drawing.Point(12, 375);
+            this.refreshFullTreeButton.Name = "refreshFullTreeButton";
+            this.refreshFullTreeButton.Size = new System.Drawing.Size(368, 23);
+            this.refreshFullTreeButton.TabIndex = 11;
+            this.refreshFullTreeButton.Text = "Refresh Full Tree";
+            this.refreshFullTreeButton.UseVisualStyleBackColor = true;
+            this.refreshFullTreeButton.Click += new System.EventHandler(this.refreshFullTreeButton_Click);
             // 
             // ChildBranchEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 383);
+            this.ClientSize = new System.Drawing.Size(392, 417);
+            this.Controls.Add(this.refreshFullTreeButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -187,6 +193,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TrackBar recursionLengthTrackBar;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button refreshFullTreeButton;
     }
 }

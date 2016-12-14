@@ -20,6 +20,7 @@ namespace FractalTree
         BackgroundWorker drawer = new BackgroundWorker();
         ToolTip t = new ToolTip();
         Options optionsForm = new Options();
+
         private int initialLength;
 
 
@@ -31,7 +32,12 @@ namespace FractalTree
             drawer.DoWork += Drawer_DoWork;
             drawer.RunWorkerCompleted += Drawer_RunWorkerCompleted;
             initialLength = lengthTrackBar.Value;
+            optionsForm.callUpdate += OptionsForm_callUpdate;
+        }
 
+        private void OptionsForm_callUpdate()
+        {
+            button1_Click(null, null);
         }
 
         private void Drawer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -52,7 +58,6 @@ namespace FractalTree
         private void Form1_Shown(object sender, EventArgs e)
         {
             button1_Click(null, null);
-
         }
 
         private void DrawFractalTree(DoWorkEventArgs e)
@@ -83,31 +88,18 @@ namespace FractalTree
         private void DrawBranch(int length, DoWorkEventArgs e)
         {
             if (drawer.CancellationPending)
-            {
                 e.Cancel = true;
-            }
             else
             {
                 g.DrawLine(drawingPen, 0, 0, 0, -length);
                 g.TranslateTransform(0, -length);
                 if (length > 4)
-                {
                     foreach (Branch b in optionsForm.GetBranches())
                     {
                         g.RotateTransform(b.getAngle());
                         DrawBranch((int)(length * b.getRecLength()), e);
                         g.RotateTransform(-b.getAngle());
                     }
-                    
-                    /*
-                    g.RotateTransform(angleTrackBar.Value);
-                    DrawBranch(length * recursionLengthTrackBar.Value / 100, e);
-                    g.RotateTransform(-angleTrackBar.Value);
-                    g.RotateTransform(.15F*-angleTrackBar.Value);
-                    DrawBranch(length * recursionLengthTrackBar.Value / 100, e);
-                    g.RotateTransform(.15F*angleTrackBar.Value);
-                    */
-                }
                 g.TranslateTransform(0, length);
             }
         }

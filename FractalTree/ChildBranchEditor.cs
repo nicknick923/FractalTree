@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FractalTree.Options;
 
 namespace FractalTree
 {
@@ -16,6 +17,7 @@ namespace FractalTree
         private Graphics panelGraphics;
         private Graphics bitmapGraphics;
         private Bitmap drawingImage;
+        public event UpdateEventHandler callUpdate;
         public ChildBranchEditor(Branch inBranch)
         {
             InitializeComponent();
@@ -35,7 +37,6 @@ namespace FractalTree
         {
             drawingImage = new Bitmap(panel1.Size.Width, panel1.Size.Height);
             bitmapGraphics = Graphics.FromImage(drawingImage);
-            //bitmapGraphics.Clear(Color.Gray);
             b.DrawBranchInEditor(bitmapGraphics);
             panelGraphics.DrawImage(drawingImage, 0, 0);
         }
@@ -47,13 +48,19 @@ namespace FractalTree
 
         private void recursionLengthTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            b = new Branch(b.getAngle(), (float)recursionLengthTrackBar.Value / 100);
+            b.changeCharacteristics(b.getAngle(), (float)recursionLengthTrackBar.Value / 100);
             panel1.Invalidate();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void refreshFullTreeButton_Click(object sender, EventArgs e)
         {
-            //updateDrawing();
+            callUpdate();
+        }
+
+        private void angleTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            b.changeCharacteristics(angleTrackBar.Value, b.getRecLength());
+            panel1.Invalidate();
         }
     }
 }

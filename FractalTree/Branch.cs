@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace FractalTree
 {
-    public class Branch : IEnumerable
+    public class Branch
     {
-        private int angleFromParent;
+        private int angle;
         private float recLength;
 
         public Branch(int inAngle, float recursiveLength)
         {
-            angleFromParent = inAngle;
+            angle = inAngle;
             recLength = recursiveLength;
         }
 
@@ -36,24 +36,15 @@ namespace FractalTree
 
         public int getAngle()
         {
-            return angleFromParent;
+            return angle;
         }
 
-
-        public void DrawBranchInEditor(Graphics g)
+        public void changeCharacteristics(int inAngle, float inRecLength)
         {
-            Pen drawingPen = Pens.Black;
-            float gWidth = g.VisibleClipBounds.Width;
-            float gHeight = g.VisibleClipBounds.Height;
-            int length = 50;
-            g.TranslateTransform(gWidth / 2, gHeight);
-            g.DrawLine(drawingPen, 0, 0, 0, -length);
-            g.TranslateTransform(0, -length);
-            g.TranslateTransform(0, -length);
-            g.RotateTransform(getAngle());
-            length = (int)(length * getRecLength());
-            g.DrawLine(drawingPen, 0, 0, 0, -length);
+            angle = inAngle;
+            recLength = inRecLength;
         }
+
 
         public float getRecLength()
         {
@@ -62,30 +53,10 @@ namespace FractalTree
 
         public override String ToString()
         {
-            return "Angle: " + angleFromParent + " Recursive Length: " + recLength;
+            return "Angle: " + angle + " Recursive Length: " + recLength;
         }//test
 
 
-
-        public IEnumerator GetEnumerator()
-        {
-            return ((IEnumerable)Current).GetEnumerator();
-        }
-
-        public Branch Current
-        {
-            get
-            {
-                try
-                {
-                    return this;
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    throw new InvalidOperationException();
-                }
-            }
-        }
 
     }
 }

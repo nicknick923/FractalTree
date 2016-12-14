@@ -12,6 +12,8 @@ namespace FractalTree
 {
     public partial class Options : Form
     {
+        public delegate void UpdateEventHandler();
+        public event UpdateEventHandler callUpdate;
         public Options()
         {
             InitializeComponent();
@@ -56,6 +58,13 @@ namespace FractalTree
         {
             ChildBranchEditor cbe = new ChildBranchEditor((Branch)listBox1.SelectedItem);
             cbe.Show();
+            cbe.callUpdate += ChildBranchEditorFormClosed;
+        }
+
+        private void ChildBranchEditorFormClosed()
+        {
+            callUpdate();
+            //*************************
         }
 
         private void removeBranchButton_Click(object sender, EventArgs e)
