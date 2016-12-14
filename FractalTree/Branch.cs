@@ -26,7 +26,7 @@ namespace FractalTree
             int length = 50;
             g.TranslateTransform(gWidth / 2, gHeight);
             g.DrawLine(drawingPen, 0, 0, 0, -length);
-            g.TranslateTransform(0, -length);
+            //g.TranslateTransform(0, -length);
             g.TranslateTransform(0, -length);
             g.RotateTransform(getAngle());
             length = (int)(length * getRecLength());

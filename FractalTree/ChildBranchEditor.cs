@@ -22,7 +22,6 @@ namespace FractalTree
         private void ChildBranchEditor_Shown(object sender, EventArgs e)
         {
             b.DrawBranchInEditor(panel1.CreateGraphics());
-
         }
     }
 }
