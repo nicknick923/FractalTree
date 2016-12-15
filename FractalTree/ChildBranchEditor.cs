@@ -47,6 +47,7 @@ namespace FractalTree
             b.ChangeCharacteristics(b.GetAngle(), (float)recursionLengthTrackBar.Value / 100);
             panel1.Invalidate();
             CallNumberUpdate();
+            label9.Text = recursionLengthTrackBar.Value + "%";
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
 
@@ -67,6 +68,7 @@ namespace FractalTree
             b.ChangeCharacteristics(angleTrackBar.Value, b.GetRecLength());
             panel1.Invalidate();
             CallNumberUpdate();
+            label6.Text = angleTrackBar.Value + "°";
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
         }
@@ -81,6 +83,16 @@ namespace FractalTree
         {
             if (liveUpdateCheckBox.Checked)
                 VisualUpdateEvent();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

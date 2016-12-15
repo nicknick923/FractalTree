@@ -53,7 +53,7 @@ namespace FractalTree
 
         public override String ToString()
         {
-            return "Angle: " + angle + "° Recursive Length: " + recLength;
+            return "Angle: " + angle.ToString().PadLeft(6) + "° Recursive Length: " + (recLength*100).ToString().PadLeft(5) + "%";
         }
     }
 }

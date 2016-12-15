@@ -40,12 +40,17 @@
             this.recursionLengthTrackBar = new System.Windows.Forms.TrackBar();
             this.refreshFullTreeButton = new System.Windows.Forms.Button();
             this.liveUpdateCheckBox = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.angleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recursionLengthTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(12, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(195, 166);
@@ -169,6 +174,26 @@
             this.liveUpdateCheckBox.Text = "Live Update";
             this.liveUpdateCheckBox.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(157, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "label6";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "label9";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // ChildBranchEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +214,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ChildBranchEditor";
             this.Text = "Branch Editor";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.angleTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recursionLengthTrackBar)).EndInit();
             this.ResumeLayout(false);
@@ -210,5 +237,7 @@
         private System.Windows.Forms.TrackBar recursionLengthTrackBar;
         private System.Windows.Forms.Button refreshFullTreeButton;
         private System.Windows.Forms.CheckBox liveUpdateCheckBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
     }
 }
